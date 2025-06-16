@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sex Transmutation Vision Board</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css">
+
+  <style>
+    /* Custom styles for scrolling text and image transitions */
+    .scrolling-text {
+      animation: scroll 13s linear infinite;
+      white-space: nowrap;
+    }
+    @keyframes scroll {
+      0% { transform: translateX(100%); }
+      100% { transform: translateX(-100%); }
+    }
+    .grid-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      transition: opacity 1s ease-in-out;
+    }
+    .fade-out {
+      opacity: 0;
+    }
+    .fade-in {
+      opacity: 1;
+    }
+    /* Ensure grid fills viewport */
+    #vision-board {
+      height: 100vh;
+    }
+    /* Equal row heights */
+    .grid-rows-3 > div {
+      height: 33.33vh; /* 100vh / 3 rows for desktop */
+    }
+    .grid-rows-4 > div {
+      height: 25vh; /* 100vh / 4 rows for mobile */
+    }
+    #quote{
+     position: absolute;
+     top: auto;
+     bottom: 0%;
+     background:none;
+     font-size:3rem;
+    }
+    .quote-box{
+      height:40px;
+     width: 100%;
+     padding: 10px;
+     z-index: 9999;
+     position: absolute;
+     top: 50%;
+     margin-bottom:50px;
+  
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-black flex flex-col">
+ <audio id="bg-music"></audio>
+  <button id="audio-btn" onclick="toggleAudio()" class="absolute top-2 right-2 text-white bg-gray-800 p-2 rounded text-sm md:text-base">Play Music</button>
+
+
+  <!-- Image Grid -->
+  <div id="vision-board" class="grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 grid-rows-4 md:grid-rows-3 gap-1">
+    <!-- 12 cells generated dynamically -->
+  </div>
+
+  <div class="quote-box">
+  <!-- Quote overlay -->
+  <div id="quote" class="w-full text-center text-white text-xl md:text-3xl font-bold scrolling-text bg-black bg-opacity-50 py-2"></div>
+  </div>
+
+
+  <script>  
+     // Array of audio files (replace with your file paths)
+    const audioFiles = [
+      'audio/audio1.mp3',
+      'audio/audio2.mp3',
+      'audio/audio3.mp3',
+      'audio/audio4.mp3',
+      'audio/audio5.mp3',
+      'audio/audio6.mp3',
+      'audio/audio7.mp3',
+      'audio/audio8.mp3',
+      'audio/audio9.mp3',
+      'audio/audio10.mp3'
+    ];  
+        var audioElement = document.getElementById('bg-music');
+      const audioBtn = document.getElementById('audio-btn');
+// Audio state
+    let currentAudioIndex = 0;
+    let isPlaying = false;
+  audioElement.src = audioFiles[currentAudioIndex];
+    audioElement.addEventListener('ended', playNextAudio);
+
+    // Toggle play/pause
+    function toggleAudio() {
+      if (isPlaying) {
+        audioElement.pause();
+        audioBtn.textContent = 'Play Music';
+      } else {
+        audioElement.play();
+        audioBtn.textContent = 'Pause Music';
+      }
+      isPlaying = !isPlaying;
+    }
+
+    // Play next audio file
+    function playNextAudio() {
+      currentAudioIndex = (currentAudioIndex + 1) % audioFiles.length;
+      audioElement.src = audioFiles[currentAudioIndex];
+      if (isPlaying) {
+        audioElement.play();
+      }
+    }
+
+   
+
+    // Array of placeholder images (replace with your curated URLs)
+    
+    const images = [
+      'https://tube-site.s3.us-east-2.amazonaws.com/VisionBoardPro-IMG/dan-aroundmodels.png',
+      'https://tube-site.s3.us-east-2.amazonaws.com/VisionBoardPro-IMG/dan-girls-3.png',
+      'https://tube-site.s3.us-east-2.amazonaws.com/VisionBoardPro-IMG/dan-girls-4.png', // Private jet
+      'https://tube-site.s3.us-east-2.amazonaws.com/VisionBoardPro-IMG/dan-girls-m8.png', // Luxury beach
+      'https://tube-site.s3.us-east-2.amazonaws.com/VisionBoardPro-IMG/dan-girls-sex.png', // City penthouse
+      'https://tube-site.s3.us-east-2.amazonaws.com/VisionBoardPro-IMG/dan-girls-yacht.png', // Luxury car
+      'https://tube-site.s3.us-east-2.amazonaws.com/VisionBoardPro-IMG/model-adrianalima.png', // Sports car
+      'https://tube-site.s3.us-east-2.amazonaws.com/VisionBoardPro-IMG/porn-whitesoftboobs.png'  ,
+      'https://tube-site.s3.us-east-2.amazonaws.com/VisionBoardPro-IMG/porn-hotgirlbj.png',
+      'https://tube-site.s3.us-east-2.amazonaws.com/VisionBoardPro-IMG/porn-2girlblowjob.png',
+      'https://tube-site.s3.us-east-2.amazonaws.com/VisionBoardPro-IMG/model-mirandaker.png',
+      'https://tube-site.s3.us-east-2.amazonaws.com/VisionBoardPro-IMG/thumb1.jpg',
+      'https://el.phncdn.com/gif/40716592.gif',
+      "https://i2-prod.dailystar.co.uk/incoming/article20477034.ece/ALTERNATES/s1227b/httpscdnimagesdailystarcoukdynamic122photos698000900x738279698",
+      'https://external-preview.redd.it/uqYos-wuybYdun_z5LMuUZrARgXyqlpENe7U7pHUkbM.png?format=pjpg&auto=webp&s=e7fb919ca85665fd1a3a21534863f36918dceace',
+      'https://i.dailymail.co.uk/1s/2022/05/09/03/57569519-0-image-a-64_1652063497203.jpg',
+      'https://video.damplips.com/pics/wp-content/uploads/2024/07/naked-girls-sex.jpg',
+      'https://video.damplips.com/pics/wp-content/uploads/2023/08/naked-girls-sex.jpg',
+      'https://josporn.com/uploads/26483/thumb1.1.jpg',
+    ];
+
+    // Array of motivational quotes
+    const quotes = [
+    "Sex with hot, naked women is the greatest feeling in the world.",
+    "Having as much sex with the hottest women possible is my only pursuit",
+    "The possibility of having sex with pornstars is the greatest motivator.",
+'Beauty will save the world, your world.',
+       "All life, is sex - Robert California",
+      "Money unlocks sex - Gene Simmons",
+      "Wilt Chamberlain slept with 20,000 women",
+      "Dan Bilzerians 15:1 model to male ratio party",
+      "Sex is life force",
+      "Turn work into lust, then lust more",
+      "Most men live lives of quiet desperation",
+       "Transform desire into unstoppable ambition.",
+      "Your empire is built on relentless focus.",
+      "Lust fuels the grind—own your destiny.",
+      "Every step today brings you closer to billions.",
+      "Conquer the grind, claim the throne."    
+    ];
+
+    // Get DOM elements
+    const visionBoard = document.getElementById('vision-board');
+    const quoteElement = document.getElementById('quote');
+
+    // Generate 12 grid cells
+    for (let i = 0; i < 12; i++) {
+      const img = document.createElement('img');
+      img.src = images[Math.floor(Math.random() * images.length)];
+      img.className = 'grid-image fade-in';
+      img.loading = 'lazy';
+      visionBoard.appendChild(img);
+      // Staggered updates
+      setInterval(() => updateImage(img), getRandomInterval());
+    }
+
+    // Function to update single image with fade
+    function updateImage(img) {
+      img.classList.remove('fade-in');
+      img.classList.add('fade-out');
+      setTimeout(() => {
+        img.src = images[Math.floor(Math.random() * images.length)];
+        img.classList.remove('fade-out');
+        img.classList.add('fade-in');
+      }, 1000);
+    }
+
+    // Random interval between 5–15 seconds
+    function getRandomInterval() {
+      return Math.floor(Math.random() * 10000) + 5000;
+    }
+
+    // Function to update quote
+    let currentQuoteIndex = 0;
+    function updateQuote() {
+      quoteElement.textContent = quotes[currentQuoteIndex];
+      currentQuoteIndex = (currentQuoteIndex + 1) % quotes.length;
+    }
+
+    // Initial setup
+    updateQuote();
+
+    // Update quote every 10 seconds
+    setInterval(updateQuote, 14000);
+  </script>
+</body>
+</html>
